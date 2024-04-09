@@ -1,0 +1,354 @@
+body{
+  padding: 0px;
+  margin: 0px;
+}
+
+.mySlides {
+  display:none;
+  width: 400px;
+  height: 400px;
+  margin-left: 205px;
+}
+
+ul.NavBar {
+	top: 0;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #003F8F;
+}
+
+ul.NavBar li{
+  float:left
+}
+
+ul.NavBar li a{
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+ul.NavBar li a:hover:not(.active){
+  background-color: inherit;
+}
+
+ul.NavBar li a.active{
+  background-color: inherit;
+}
+
+ul.NavBar li.right{
+	display: block;
+	text-align: center;
+	padding: 14px 16px;
+	float: right;
+	color: white;
+}
+
+.right{
+  color:black;
+}
+
+.dropdown {
+  float: right;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  font-family:"Akshar";
+  color: black;
+  font-weight: bold;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+@media screen and(max-widht: 600px){
+	ul.NavBar li.right, ul.NavBar li{
+    float: none;
+  }
+}
+
+#PictureSpace{
+  background-color:white;
+  width: 80%;
+  height:auto;
+  text-align: center;
+  color: white;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#PictureSpace img{
+  width: 50%;
+  height: 40%;
+  height: auto;
+  float: none;
+}
+
+#DescriptionSpace{
+  background-color: #003F8F;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  font-family: "Rubik";
+  font-weight: bold;
+  color: white;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+#Description{
+	padding-bottom:98px;
+}
+
+#CreditsSpace img{
+  height: 75px;
+}
+
+#CreditsSpace p{
+  color:#003F8F;
+  font-size: 20px;
+  font-family: "Leckerli One";
+  text-align: center;
+}
+
+h1,h2{
+  font-family: "Leckerli One";
+  font-weight: bold;
+  text-align: center;
+  font-size: 30px;
+  color:#003F8F;
+}
+
+h5{
+  font-family: "Leckerli One";
+  font-weight: bold;
+  font-size: 30px;
+  color: white;
+}
+
+hr{
+  width: 75%;
+  margin-bottom: 75px;
+  border: 2px solid;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  /*padding: 10px;*/
+  height: 120px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+a{
+
+  color: white;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#Description_into  h1{
+  font-family:"Leckerli One";
+  font-size: 45px;
+  color: white;
+  text-shadow: 2px 2px black;
+}
+
+#Description_into h2{
+  font-family: "Akshar";
+  color:white;
+  font-size: 35px;
+  text-shadow: 1px 1px black;
+}
+
+#Description_into p{
+  font-family: "Akshar";
+  color:white;
+  font-size: 25px;
+}
+
+.c {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.r:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media only screen and (max-width:500px) {
+  /* For mobile phones: */
+  #CreditsSpace h2{
+
+    font-size: 25px;
+  }
+
+  #PictureSpace img{
+
+    width: 50%;
+    height: 65%;
+    height: auto;
+    float: none;
+    margin-left:100px;
+  }
+
+  #text p{
+
+      margin:0px;
+
+  }
+
+  #info p{
+
+    font-size: 25px;
+  }
+
+  #info{
+
+    align-items: center;
+  }
+
+  #footer p{
+
+    font-size: 13px;
+  }
+
+
+  #Piaggio img{
+
+    position: absolute;
+    left: -9999px;
+  }
+
+  #Marconi img{
+
+    position: absolute;
+    left: -9999px;
+  }
+}
+
+@media only screen and (max-width:800px) {
+
+  #CreditsSpace h2{
+
+    font-size: 20px;
+  }
+
+  #Piaggio img{
+
+    position: absolute;
+    left: -9999px;
+  }
+
+  #Marconi img{
+
+    position: absolute;
+    left: -9999px;
+  }
+}
+
+
+
+@media only screen and (max-width:400px){
+
+  #CreditsSpace h2{
+
+    font-size:14px;
+  }
+
+  #text p{
+
+
+      font-size: 20px;
+
+
+  }
+
+  #info p{
+
+    font-size: 25px;
+  }
+
+  #info h2{
+
+    font-size: 35px;
+  }
+
+  .c {
+    float: left;
+    width: 50%;
+    padding: 1px;
+    height: 300px; /* Should be removed. Only for demonstration */
+  }
+
+  /* Clear floats after the columns */
+  .r:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  #audio{
+	  
+	  width:182px;
+	  height:40px;
+  }
+
+   #PictureSpace img{
+	   
+	   height:120px;
+	   width:150px;
+   }
+   
+   #line{
+	   
+	
+   }
+
+}
