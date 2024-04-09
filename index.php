@@ -8,6 +8,7 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta charset="utf-8">
+    <link rel="icon" type="image/x-icon" href="img\favicon.png">
     <link rel="stylesheet" href="stile.css">
     <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -54,7 +55,6 @@
                 
                   echo '<img src="'.$row['filename'].'" placeholde="img" >'; 
            ?> 
-         
             </section>
         </center>
 
