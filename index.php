@@ -103,7 +103,7 @@
                     if($row['Cilindrata']==0)
                         echo "<p> N/D </p>";
                     else
-                        echo "<p>".$row['Cilindrata']."</p>";
+                        echo "<p>".$row['Cilindrata']." CC</p>";
                 
               ?></p>
               </div>
@@ -158,13 +158,15 @@
                       FROM audio
                       WHERE id_vespa='$id'";
 
-                  $result = mysqli_query($db, $query);
+                  $result = mysqli_query($db, $sql);
                   $row=mysqli_fetch_assoc($result);
+				  
+				  echo '<audio controls id="audio" >';
+				  echo '<source src="'.$row['filename'].'" type="audio/mpeg">'; 
+				  echo '</audio>';
             ?>
 
-            <audio controls id="audio" >
-              <?php echo '<source src="'.$row['filename'].'" type="audio/mpeg">' ?>
-            </audio>
+            
             <br><br><br>
 		</div>
 	</div>
