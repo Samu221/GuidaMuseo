@@ -1,7 +1,6 @@
 <?php
-    use google\appengine\api\cloud_storage\CloudStorageTools;
-    $db = mysqli_connect(null, "root", "root", "museopiaggio-db", null, "/cloudsql/vespa-383706:us-central1:vespa-db");
-    $bucketName = "vespa-images-bucket";
+   
+    $db = mysqli_connect("localhost","root","","progettomuseoDB");
     $id =  $_GET["id"];
 ?>
 <!DOCTYPE html>
@@ -9,7 +8,7 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta charset="utf-8">
-    <link rel="stylesheet" href="./Style/stile.css">
+    <link rel="stylesheet" href="stile.css">
     <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,16 +48,13 @@
         <center>
 		      <section>
           <?php
-                $query = " select * from image where id_vespa = $id ";
+                $query = " SELECT filename FROM image WHERE id_vespa = $id ";
                 $result = mysqli_query($db, $query);
-                while ($data = mysqli_fetch_assoc($result)) 
-                {
-                    $img_src = "https://storage.googleapis.com/{$bucketName}/{$data['filename']}";
-            ?>
-                <img class="mySlides" src="<?php echo $img_src; ?>">
-            <?php
-                }
-            ?>
+                $row=mysqli_fetch_assoc($result);
+                
+                  echo '<img src="'.$row['filename'].'" placeholde="img" >'; 
+           ?> 
+         
             </section>
         </center>
 
@@ -72,76 +68,70 @@
         <div id="Description_into">
 
           <div id="info">
-            <h1>
+            
               <?php
-                $query = "SELECT Nome
-                          FROM vespa
-                          WHERE $id = ID_vespa";
+                $query = "SELECT * FROM vespa WHERE ID_vespa='$id'";
                 
                 $result = mysqli_query($db, $query);
+
+                $row=mysqli_fetch_assoc($result);
+
+                echo '<h1>'.$row['Nome'].'</h1>';
               ?>
-            </h1>
+           
 
             <div class="r">
               <div class="c">
                 <h2 style="text-align:center">MODELLO</h2>
                 <p><?php
-                $query = "SELECT Nome
-                          FROM vespa
-                          WHERE $id = ID_vespa";
+                
                 
                 $result = mysqli_query($db, $query);
-                foreach ($result as $riga)
-                {
-                    echo "<p>". ucwords($riga['Nome']) ."</p>";
-                }
+                $row=mysqli_fetch_assoc($result);
+      
+                echo "<p>". ucwords($row['Nome']) ."</p>";
+
+                
               ?></p>
               <br>
                 <h2 style="text-align:center">CILINDRATA</h2>
                 <p><?php
-                $query = "SELECT Cilindrata
-                          FROM vespa
-                          WHERE $id = ID_vespa";
                 
                 $result = mysqli_query($db, $query);
-                foreach ($result as $riga)
-                {
-                    if($riga['Cilindrata']==0)
+                $row=mysqli_fetch_assoc($result);
+
+                    if($row['Cilindrata']==0)
                         echo "<p> N/D </p>";
                     else
-                        echo "<p>".$riga['Cilindrata']."</p>";
-                }
+                        echo "<p>".$row['Cilindrata']."</p>";
+                
               ?></p>
               </div>
               
               <div class="c">
                 <h2 style="text-align:center">ARTISTA</h2>
                 <p><?php
-                $query = "SELECT Artista
-                          FROM vespa
-                          WHERE $id = ID_vespa";
-                
+               
+        
                 $result = mysqli_query($db, $query);
-                foreach ($result as $riga)
-                {
-                    echo "<p>". ucwords($riga['Artista'])."</p>";
-                }
+                $row=mysqli_fetch_assoc($result);
+
+                echo "<p>". ucwords($row['Artista'])."</p>";
+                
               ?></p>
               <br>
                 <h2 style="text-align:center">ANNO</h2>
                 <p><?php
-                $query = "SELECT Anno
-                          FROM vespa
-                          WHERE $id = ID_vespa";
                 
+            
                 $result = mysqli_query($db, $query);
-                foreach ($result as $riga)
-                {   
-                    if($riga['Anno']==0)
+                $row=mysqli_fetch_assoc($result);
+
+                    if($row['Anno']==0)
                         echo "<p> N/D </p>";
                     else
-                        echo "<p>".$riga['Anno']."</p>";
-                }
+                        echo "<p>".$row['Anno']."</p>";
+                
               ?></p>
               </div>
             </div>
@@ -151,22 +141,29 @@
                <hr>
             <div id="text" style="margin:10px; text-align:justify; text-justify:inter-word">
             <p><?php
-                $query = "SELECT Descrizione
-                          FROM vespa
-                          WHERE $id = ID_vespa";
                 
                 $result = mysqli_query($db, $query);
-                foreach ($result as $riga)
-                {
-                    echo "<p>".$riga['Descrizione']."</p>";
-                }
+                $row=mysqli_fetch_assoc($result);
+
+                    echo "<p>".$row['Descrizione']."</p>";
+                
               ?></p>
 
            </div>
-
             <hr>
+
+            <?php
+
+                $sql="SELECT filename
+                      FROM audio
+                      WHERE id_vespa='$id'";
+
+                  $result = mysqli_query($db, $query);
+                  $row=mysqli_fetch_assoc($result);
+            ?>
+
             <audio controls id="audio" >
-              <source src="./audio/$riga['path_audio']" type="audio/mpeg">
+              <?php echo '<source src="'.$row['filename'].'" type="audio/mpeg">' ?>
             </audio>
             <br><br><br>
 		</div>
@@ -179,7 +176,7 @@
                 <img src="./img/logo-museo-piaggio.svg" style="padding-left:325px;margin-top:35px;"/>
             </div>
             <div class="column">
-               <a href="https://www.marconipontedera.edu.it/" target="_blank"><h2 style="padding-top:15px;">Sviluppo a cura di <br>4CI e 5BI - ITIS MARCONI PONTEDERA</h2></a>
+               <a href="https://www.marconipontedera.edu.it/" target="_blank"><h2 style="padding-top:15px;">Sviluppo a cura di <br>5CI - ITIS MARCONI PONTEDERA</h2></a>
             </div>
             <div class="column" id="Marconi">
                 <a href="https://www.marconipontedera.edu.it/" target="_blank"><img src="./img/logo-marconi.png" style="height:150px; float:left; padding-left:100px;"/>
