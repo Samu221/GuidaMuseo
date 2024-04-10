@@ -139,7 +139,7 @@
          
             <br><br><br><br>
                <hr>
-            <div id="text" style="margin:10px; text-align:justify; text-justify:inter-word">
+            <div id="text" style="margin:50px;">
             <p><?php
                 
                 $result = mysqli_query($db, $query);
